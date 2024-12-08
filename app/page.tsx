@@ -1,101 +1,111 @@
-import Image from "next/image";
-
-export default function Home() {
+import { FaSearch, FaShoppingCart } from 'react-icons/fa'; // Importing React Icons
+import AboutUs from './components/about'
+import FoodCategory from './components/category'
+import WhyChooseUs from './components/wychose';
+import Clients from './components/client';
+import OurMenu from './components/menu';
+import MeetOurChef from './components/cheif';
+import Testimonials from './components/testimonial';
+import RestraindCreativeProcess from './components/creative';
+import Blog from './components/blog';
+import Footer from './components/footer';
+import Topnewsletter from './components/footer';
+import Smile from './components/category';
+import Footera from './components/footer';
+const HeaderHero = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+  <div className="relative w-full min-h-[690px] text-white font-inter">
+      {/* Background Section */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        {/* <img
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          alt="Background Image"
+          src="unsplash:qom5MPOER-I.png"
+        /> */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Hero Content */}
+      <div className="absolute top-[20%] md:top-[27%] left-0 w-full flex flex-col md:flex-row items-center px-6 md:px-12 gap-10">
+        {/* Text Section */}
+        <div className="w-full md:w-1/2 text-left">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+            <span className="text-[#FF9F0D]">The Art of Speed</span>
+            <br />
+            Food Quality
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl mb-6 text-gray-300">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius sed pharetra dictum neque massa congue.
+          </p>
+          <div className="flex items-center gap-4">
+            <button className="bg-[#FF9F0D] text-white rounded-full py-2 px-6 text-lg font-semibold hover:bg-[#ff7c00] transition duration-300">
+              See Menu
+            </button>
+            <p className="text-sm sm:text-lg">Quick & Amusing!</p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Hero Image Section */}
+        <div className="w-full md:w-1/2 flex justify-center items-center">
+          <div className="relative w-[250px] sm:w-[300px] h-[250px] sm:h-[300px] rounded-full overflow-hidden border-8 border-[#FF9F0D] shadow-lg">
+            <img
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              alt="Hero Image"
+              src="/images/img.png"
+            />
+            <div className="absolute inset-0 w-[90%] h-[90%] m-auto rounded-full overflow-hidden">
+              <img
+                className="absolute top-0 left-0 w-full h-full object-cover"
+                alt="Leaf Overlay"
+                src="images/res.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navbar */}
+      <div className="absolute top-0 left-0 w-full h-[70px] md:h-[87px] flex justify-between items-center px-6 md:px-12 bg-transparent">
+        <div className="flex gap-4 sm:gap-8 text-sm md:text-lg font-semibold">
+          <div>Menu</div>
+          <div>Blog</div>
+          <div>Pages</div>
+          <div>About</div>
+          <div>Shop</div>
+          <div>Contact</div>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div className="text-white">
+            <FaSearch size={20} />
+          </div>
+          <div className="text-white">
+            <FaShoppingCart size={20} />
+          </div>
+        </div>
+      </div>
+
+      {/* Logo */}
+      <div className="absolute top-4 left-[50%] transform -translate-x-1/2 text-3xl sm:text-4xl md:text-5xl font-semibold text-[#FF9F0D]">
+        Food<span className="text-white">tuck</span>
+      </div>
+
+      {/* Indicator */}
+      <div className="absolute bottom-6 left-[5%] w-[15px] h-[15px] rounded-full bg-[#FF9F0D]"></div>
     </div>
+    <AboutUs/>
+    <FoodCategory/>
+    <WhyChooseUs/>
+    <Clients/>
+    <OurMenu/>
+    <MeetOurChef/>
+    <Testimonials/>
+    <RestraindCreativeProcess/>
+    <Blog/>
+    <Footera/>
+    </>
   );
-}
+};
+
+export default HeaderHero;
