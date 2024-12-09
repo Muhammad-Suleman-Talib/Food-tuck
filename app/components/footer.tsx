@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 
 const Footera: NextPage = () => {
   return (
-    <div className="w-full bg-[#737171] text-[#FF9F0D] py-16 px-8">
+    <div className="w-full bg-[#878484] text-[#FF9F0D] py-16 px-8">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {/* About Section */}
         <div>
@@ -66,7 +66,7 @@ const Footera: NextPage = () => {
 
       {/* Footer Bottom */}
       <div className="text-center mt-16 text-sm">
-        <p>Copyright © 2022 by Ayeman. All Rights Reserved.</p>
+        <p>Copyright © 2022 by Muhammmad Suleman All Rights Reserved.</p>
       </div>
     </div>
   );

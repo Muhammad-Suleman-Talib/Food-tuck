@@ -39,11 +39,11 @@ const OurMenu = () => {
             />
             <div className="text-left">
               <h3 className="text-xl font-bold text-primary-color">
-                <span className="text-[#FF9F0D]">{item.name}</span>
+                <span className="text-black">{item.name}</span>
               </h3>
-              <p className="text-sm text-[#979292]">{item.description}</p>
+              <p className="text-sm text-black">{item.description}</p>
               <span className="block mt-2 text-lg font-semibold text-primary-color">
-                <span className="text-[#FF9F0D]">{item.price}</span>
+                <span className="text-black">{item.price}</span>
               </span>
             </div>
           </div>
