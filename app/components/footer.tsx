@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 
 const Footera: NextPage = () => {
   return (
+    <>
     <div className="w-full bg-[#878484] text-[#FF9F0D] py-16 px-8">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {/* About Section */}
@@ -66,10 +67,18 @@ const Footera: NextPage = () => {
 
       {/* Footer Bottom */}
       <div className="text-center mt-16 text-sm">
+<<<<<<< HEAD
+      <p>Copyright © 2022 by Muhammad Suleman . All Rights Reserved.</p>
+=======
+      <div className="text-center mt-16 text-sm">
       <p>Copyright © 2022 by Muhammad Suleman . All Rights Reserved.</p>
       </div>
+>>>>>>> 724076346199580e2828edbf81c9f2cc7065efb3
+      </div>
     </div>
+  </>
   );
 };
 
 export default Footera;
+
