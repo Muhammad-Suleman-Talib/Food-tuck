@@ -51,7 +51,7 @@ const Navbar = () => {
 
         {/* Hamburger Menu Button */}
         <button
-          className="md:hidden text-2xl text-white focus:outline-none"
+          className="md:hidden text-2xl text-white focus:outline-none z-60" // Add z-index to make sure it's visible
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -60,7 +60,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#737171] w-full py-4">
+        <div className="md:hidden bg-[#737171] w-full py-4 z-50 transition-all duration-300 ease-in-out">
           {/* Display Section (Static) */}
           <div className="text-xl font-bold text-center text-[#FF9F0D] mb-4">
             Food<span className="text-white">tuck</span>
