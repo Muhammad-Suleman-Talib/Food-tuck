@@ -67,13 +67,11 @@ const Footera: NextPage = () => {
 
       {/* Footer Bottom */}
       <div className="text-center mt-16 text-sm">
-<<<<<<< HEAD
-      <p>Copyright © 2022 by Muhammad Suleman . All Rights Reserved.</p>
-=======
+
       <div className="text-center mt-16 text-sm">
       <p>Copyright © 2022 by Muhammad Suleman . All Rights Reserved.</p>
       </div>
->>>>>>> 724076346199580e2828edbf81c9f2cc7065efb3
+
       </div>
     </div>
   </>
