@@ -10,6 +10,7 @@ import RestraindCreativeProcess from './components/creative';
 import Blog from './components/blog';
 import Footera from './components/footer';
 import Navbar from './components/header';
+import Link from 'next/link';
 const HeaderHero = () => {
   return (
     <>
@@ -33,7 +34,8 @@ const HeaderHero = () => {
           </p>
           <div className="flex items-center gap-4">
             <button className="bg-[#FF9F0D] text-white rounded-full py-2 px-6 text-lg font-semibold hover:bg-[#ff7c00] transition duration-300">
-              See Menu
+              
+              <Link href='/menuitem'>See Menu</Link>
             </button>
             <p className="text-sm sm:text-lg">Quick & Amusing!</p>
           </div>

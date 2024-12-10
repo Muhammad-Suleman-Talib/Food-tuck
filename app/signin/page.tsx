@@ -1,22 +1,38 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaUser, FaLock, FaEnvelope, FaKey, FaCheckCircle } from 'react-icons/fa';
+import { useRouter } from 'next/navigation'; 
 
 const AuthForm = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isClient, setIsClient] = useState(false); // Flag to check if the component is on the client
+  const router = useRouter();
+
+  // Use useEffect to ensure client-side logic is executed after the component mounts
+  useEffect(() => {
+    setIsClient(true); // Set the flag to true when the component is mounted on the client side
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
-    // Reset form submitted message after 3 seconds
-    setTimeout(() => setFormSubmitted(false), 3000);
+
+    // Simulate API call or form submission logic
+    setTimeout(() => {
+      router.push('/');
+    }, 3000); 
   };
 
+  // Return null or a loading state if it's being rendered on the server
+  if (!isClient) {
+    return null;
+  }
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#737171] py-16">
-      <div className="bg-gray-50   shadow-lg rounded-lg w-full max-w-md p-8">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br bg-[#737171] to-gray-900 py-24">
+      <div className="bg-gray-50 shadow-lg rounded-lg w-full max-w-md p-8">
         {/* Form Header */}
         <div className="text-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">
@@ -32,9 +48,16 @@ const AuthForm = () => {
 
         {/* Form Submission Success Message */}
         {formSubmitted && (
-          <div className="flex items-center gap-2 p-4 mb-6 bg-green-100 border border-green-500 text-green-700 rounded-md">
-            <FaCheckCircle className="text-green-500 text-lg" />
-            <span>{isSignUp ? 'Sign-up successful!' : 'Sign-in successful!'}</span>
+          <div className="flex items-center gap-3 p-4 mb-6 bg-green-100 border border-green-500 text-green-700 rounded-md animate-bounce">
+            <FaCheckCircle className="text-green-500 text-2xl" />
+            <div>
+              <p className="font-medium">
+                {isSignUp ? 'You have successfully signed up!' : 'Welcome back! You are now logged in.'}
+              </p>
+              <p className="text-sm text-gray-600">
+                {isSignUp ? 'Start exploring our features.' : 'Enjoy your experience!'}
+              </p>
+            </div>
           </div>
         )}
 

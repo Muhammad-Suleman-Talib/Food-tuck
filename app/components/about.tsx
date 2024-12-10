@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FaCheckCircle } from 'react-icons/fa'; // Importing React Icon for checkmark
 
 const AboutUs = () => {
@@ -36,7 +37,8 @@ const AboutUs = () => {
 
           <div className="flex items-center">
             <button className="bg-[#FF9F0D] text-white rounded-[30px] py-3 px-8 text-lg hover:bg-[#ff7c00] transition duration-300">
-              Read More
+             
+              <Link href='/products'> Read More</Link>
             </button>
           </div>
         </div>

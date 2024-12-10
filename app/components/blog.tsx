@@ -12,9 +12,9 @@ const Blog: NextPage = () => {
       </div>
 
       {/* Blog Section Title */}
-      <div className="absolute top-[10%] left-[50%] transform -translate-x-1/2 text-[32px] font-great-vibes text-primary-color text-center">
+      {/* <div className="absolute top-[10%] left-[50%] transform -translate-x-1/2 text-[32px] font-great-vibes text-primary-color text-center">
         <span className="text-[#FF9F0D]">Blog </span>Post
-      </div>
+      </div> */}
 
       {/* Blog Post Cards in One Line */}
       <div className="flex justify-between gap-8 absolute top-[160px] left-[50%] transform -translate-x-1/2 w-full px-4">

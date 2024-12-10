@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import Link from "next/link"; // Import Link for routing
+import Link from "next/link";
 import { FaSearch, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full bg-[#737171] text-white shadow-md fixed z-50">
-      <div className="container mx-auto px-6 md:px-12 h-[70px] flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 h-[70px] flex items-center justify-between">
         {/* Display Section */}
         <div className="text-2xl font-bold text-[#FF9F0D]">
           Food<span className="text-white">tuck</span>
@@ -35,6 +35,9 @@ const Navbar = () => {
           <Link href="/chef" className="text-sm font-medium hover:text-[#FF9F0D] transition">
             Chefs
           </Link>
+          <Link href="/contact" className="text-sm font-medium hover:text-[#FF9F0D] transition">
+            Contact
+          </Link>
           <Link href="/signin" className="text-sm font-medium hover:text-[#FF9F0D] transition">
             Login
           </Link>
@@ -48,7 +51,7 @@ const Navbar = () => {
 
         {/* Hamburger Menu Button */}
         <button
-          className="md:hidden text-xl"
+          className="md:hidden text-2xl text-white focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -80,8 +83,11 @@ const Navbar = () => {
             <Link href="/chef" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
               Chefs
             </Link>
+            <Link href="/contact" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
+              Contact
+            </Link>
             <Link href="/signin" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
-             Login
+              Login
             </Link>
           </div>
         </div>
