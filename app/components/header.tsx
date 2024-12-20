@@ -55,7 +55,11 @@ const Navbar = () => {
 
         {/* Hamburger Menu Button */}
         <button
+<<<<<<< HEAD
           className="md:hidden text-2xl text-white focus:outline-none z-60"
+=======
+          className="md:hidden text-2xl text-white focus:outline-none z-60" // Add z-index to make sure it's visible
+>>>>>>> 9facdfe5f4a3f89b839729c314a5a7aac76128ec
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
