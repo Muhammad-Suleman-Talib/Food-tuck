@@ -8,12 +8,14 @@ import MeetOurChef from './components/cheif';
 import Testimonials from './components/testimonial';
 import RestraindCreativeProcess from './components/creative';
 import Blog from './components/blog';
-import Footera from './components/footer';
-import Navbar from './components/header';
 import Link from 'next/link';
+import Popup from './components/popup';
+import AuthForms from './components/signin';
 const HeaderHero = () => {
+  
   return (
     <>
+    
    <div className="relative w-full min-h-[690px] text-white font-inter ">
       {/* Background Section */}
       <div className="absolute top-0 left-0 w-full h-full">
@@ -69,6 +71,7 @@ const HeaderHero = () => {
     <Testimonials/>
     <RestraindCreativeProcess/>
     <Blog/>
+    <Popup/>
     </>
   );
 };

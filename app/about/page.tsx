@@ -9,7 +9,7 @@ const AboutUs: NextPage = () => {
     <div className="w-full relative h-auto text-left text-base bg-[#878484] font-sans p-4 flex flex-col-reverse md:flex-row md:items-center md:space-x-8">
       {/* Images Section */}
       <div className="relative mt-8 w-full md:w-1/2 order-1 md:order-1">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-9">
           <img
             className="rounded-md object-cover w-full"
             width={336}
@@ -37,7 +37,7 @@ const AboutUs: NextPage = () => {
       </div>
 
       {/* Text Section */}
-      <div className="mt-8 md:mt-0 md:w-1/2 order-2 md:order-2">
+      <div className="mb-11 md:mt-0 md:w-1/2 order-2 md:order-2 ">
         <div className="text-primary-color text-lg font-miniver flex items-center">
           <span>About us</span>
           <div className="ml-4 bg-primary-color w-8 h-[2px]" />
@@ -55,7 +55,7 @@ const AboutUs: NextPage = () => {
         </p>
 
         <div className="flex items-center space-x-4 mt-6">
-          <button className="bg-primary-color text-white py-3 px-6 rounded-md font-bold hover:bg-primary-hover">
+          <button className="bg-primary-color text-red py-3 px-6 rounded-md font-bold hover:bg-primary-hover">
             Show more
           </button>
           <div className="flex items-center cursor-pointer">

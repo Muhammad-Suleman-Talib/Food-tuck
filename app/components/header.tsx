@@ -11,7 +11,7 @@ const Navbar = () => {
   const handleMenuClose = () => setMenuOpen(false);
 
   return (
-    <nav className="w-full bg-[#737171] text-white shadow-md fixed z-50">
+    <nav className="w-full bg-[#737171] text-white shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 md:px-12 h-[70px] flex items-center justify-between">
         {/* Display Section */}
         <div className="text-2xl font-bold text-[#FF9F0D]">
@@ -26,12 +26,16 @@ const Navbar = () => {
           <Link href="/menuitem" className="text-sm font-medium hover:text-[#FF9F0D] transition">
             Menu
           </Link>
-          <Link href="/about" className="text-sm font-medium hover:text-[#FF9F0D] transition">
-            About
-          </Link>
           <Link href="/products" className="text-sm font-medium hover:text-[#FF9F0D] transition">
             Products
           </Link>
+          <Link href="/deals" className="text-sm font-medium hover:text-[#FF9F0D] transition">
+            deals
+          </Link>
+          <Link href="/about" className="text-sm font-medium hover:text-[#FF9F0D] transition">
+            About
+          </Link>
+         
           <Link href="/chef" className="text-sm font-medium hover:text-[#FF9F0D] transition">
             Chefs
           </Link>
@@ -51,7 +55,7 @@ const Navbar = () => {
 
         {/* Hamburger Menu Button */}
         <button
-          className="md:hidden text-2xl text-white focus:outline-none"
+          className="md:hidden text-2xl text-white focus:outline-none z-60"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -60,7 +64,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#737171] w-full py-4">
+        <div className="md:hidden bg-[#737171] w-full py-4 z-50 transition-all duration-300 ease-in-out">
           {/* Display Section (Static) */}
           <div className="text-xl font-bold text-center text-[#FF9F0D] mb-4">
             Food<span className="text-white">tuck</span>
@@ -74,12 +78,16 @@ const Navbar = () => {
             <Link href="/menuitem" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
               Menu
             </Link>
-            <Link href="/about" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
-              About
-            </Link>
             <Link href="/products" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
               Products
             </Link>
+            <Link href="/deals" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
+              Deals
+            </Link>
+            <Link href="/about" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
+              About
+            </Link>
+            
             <Link href="/chef" onClick={handleMenuClose} className="text-sm font-medium hover:text-[#FF9F0D] transition">
               Chefs
             </Link>

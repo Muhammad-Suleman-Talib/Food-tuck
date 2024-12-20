@@ -1,114 +1,158 @@
-import type { NextPage } from 'next';
-import { FaSortAmountDownAlt, FaFilter, FaTags, FaRupeeSign, FaHeart, FaShoppingCart, FaStar } from "react-icons/fa"; // Importing icons
+  
+'use client'
+  import { useState } from "react";
+import Link from "next/link";
+import { FaShoppingCart, FaSearch } from "react-icons/fa"; // Importing the search icon
 
-// ProductCard Component
-const ProductCard = ({ title, price, originalPrice, imageSrc }: any) => (
-  <div className="relative w-full  bg-white rounded-lg shadow-lg overflow-hidden group">
-    <img className="h-[200px] w-full object-cover group-hover:scale-105 transition-transform" width={312} height={267} alt={title} src={imageSrc} />
-    <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black via-transparent to-transparent w-full">
-      <h3 className="text-lg font-bold text-white">{title}</h3>
-      <div className="text-base text-primary-color">
-        <span className="text-xl font-semibold text-yellow-500">{price}</span>
-        {originalPrice && <span className="line-through text-gray-400 ml-2">{originalPrice}</span>}
-      </div>
-      {/* Icons for Actions */}
-      <div className="absolute top-2 right-2 flex gap-3">
-        <FaHeart className="text-xl text-white hover:text-red-500 cursor-pointer transition-all" />
-        <FaShoppingCart className="text-xl text-white hover:text-green-500 cursor-pointer transition-all" />
-        <FaStar className="text-xl text-white hover:text-yellow-500 cursor-pointer transition-all" />
-      </div>
-    </div>
-  </div>
-);
+const productsData = [
+  { id: "1", title: "Pasta", price: 599, imageSrc: "/images/pro1.png" },
+  { id: "2", title: "Country Burger", price: 650, imageSrc: "/images/pro2.png" },
+  { id: "3", title: "Cheese Burger", price: 700, imageSrc: "/images/pro3.png" },
+  { id: "4", title: "Simple Burger", price: 350, imageSrc: "/images/pro4.png" },
+  { id: "5", title: "Masala Chat", price: 199, imageSrc: "/images/pine-apple.avif" },
+  { id: "6", title: "Pizza with Vegetables", price: 1500, imageSrc: "/images/pro6.png" },
+  { id: "7", title: "Pasta Alfredo", price: 499, imageSrc: "/images/pro7.png" },
+  { id: "8", title: "Chicken Wings", price: 650, imageSrc: "/images/pro8.png" },
+  { id: "9", title: "Chocolate Cake", price: 299, imageSrc: "/images/pro13.png" },
+  { id: "10", title: "Lemon Juice", price: 150, imageSrc: "/images/pro10.png" },
+  { id: "11", title: "Pizza with Broast", price: 1200, imageSrc: "/images/pro11.png" },
+  { id: "12", title: "Chicken Burger", price: 250, imageSrc: "/images/pro12.png" },
+  { id: "13", title: "Salad", price: 150, imageSrc: "/images/salad.jpeg" },
+  { id: "14", title: "Juice", price: 100, imageSrc: "/images/juice.jpeg" },
+  { id: "15", title: "Chicken Handi karahi", price: 1200, imageSrc: "/images/handi.jpeg" },
+  { id: "16", title: "Gol Gappa", price: 350, imageSrc: "/images/gol-gappa.jpg" },
+  { id: "17", title: "Fries", price: 150, imageSrc: "/images/fries.jpg" },
+  { id: "18", title: "Drinks", price: 180, imageSrc: "/images/drinks.jpeg" },
+  { id: "19", title: "Cup Ice-cream", price: 300, imageSrc: "/images/cup-icecream.jpeg" },
+  { id: "20", title: "Chocolate Ice-cream", price: 250, imageSrc: "/images/chocolate.jpeg" },
+  { id: "21", title: "Chicken Handi Biryani", price: 900, imageSrc: "/images/chicken-handi-biryani.avif" },
+  { id: "22", title: "BBQ", price: 299, imageSrc: "/images/BB.avif" },
+  { id: "23", title: "Karahi", price: 800, imageSrc: "/images/karahi.jpg" },
+  { id: "24", title: "Bahari-Roll", price: 180, imageSrc: "/images/bahari-roll.jpg" },
+  { id: "25", title: "Broast", price: 360, imageSrc: "/images/broast-ori.webp" },
+  { id: "26", title: "Beef Burger", price: 899, imageSrc: "/images/beef-bur.jpeg" },
+  { id: "27", title: "Garlic Pizza", price: 1200, imageSrc: "/images/garlic.avif" },
+  { id: "28", title: "Koila-Karahi", price: 1350, imageSrc: "/images/koila-karahi.jpeg" },
+  { id: "29", title: "Malai-Tikka", price: 350, imageSrc: "/images/Malai-tikka.avif" },
+  { id: "30", title: "Roll", price: 200, imageSrc: "/images/marphil.avif" },
+  { id: "31", title: "Pullao", price: 350, imageSrc: "/images/pulao.avif" },
+  { id: "32", title: "Tikka", price: 250, imageSrc: "/images/Tikka.avif" },
+];
 
-// Shop Component
-const Shop: NextPage = () => {
+
+
+const ShopPage = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("Newest");
+  const [products, setProducts] = useState(productsData);
+
+  // Handle Search
+  const handleSearch = (query:any) => {
+    setSearchQuery(query);
+    const filteredProducts = productsData.filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setProducts(filteredProducts);
+  };
+
+  // Handle Sort
+  const handleSort = (option:any) => {
+    setSortOption(option);
+    let sortedProducts = [...products];
+
+    switch (option) {
+      case "Newest":
+        sortedProducts = productsData; // Original order
+        break;
+      case "Oldest":
+        sortedProducts = [...productsData].reverse();
+        break;
+      case "Price: Low to High":
+        sortedProducts.sort((a, b) => a.price - b.price);
+        break;
+      case "Price: High to Low":
+        sortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        break;
+    }
+    setProducts(sortedProducts);
+  };
+
   return (
-    <div className="container mx-auto p-4 bg-[#8f8d8d] min-w-full ">
+    <div className="container min-w-full mx-auto p-6 bg-[#8f8d8d]">
       {/* Heading Section */}
-      <div className="text-center mt-2">
       <div className="text-center mt-16">
-  <h1 className="text-5xl font-extrabold ">
-    <span className="text-[#FF9F0D] ">Welcome to Our</span> Shop
-  </h1>
-  <p className="text-xl text-gray-700 mt-5">Browse our latest products and find your favorites!</p>
-</div>
+        <h1 className="text-5xl font-extrabold text-gray-800">
+          <span className="text-[#FF9F0D]">Welcome to Our</span> Shop
+        </h1>
+        <p className="text-xl text-gray-600 mt-5">
+          Browse our latest products and find your favorites!
+        </p>
+      </div>
 
-</div>
+      {/* Filter Section */}
+      <div className="flex flex-col md:flex-row justify-between mb-6 gap-4">
+        {/* Search */}
+        <div className="relative mb-4 md:mb-0">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
+            className="border border-gray-300 rounded-md pl-10 pr-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full"
+          />
+          <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+        </div>
 
-{/* Filter Section */}
-<div className="flex flex-col md:flex-row justify-between mb-4 gap-4">
-  {/* Sort By Section */}
-  <div className="flex items-center gap-2 mb-4 md:mb-0">
-    <FaSortAmountDownAlt className="text-xl text-primary-color" />
-    <label className="mr-2 text-xl">Sort By:</label>
-    <select className="border border-gray-300 rounded-md p-2 text-gray-700">
-      <option>Newest</option>
-      <option>Oldest</option>
-    </select>
-  </div>
-
-  {/* Show Section */}
-  <div className="flex items-center gap-2 mb-4 md:mb-0">
-    <FaFilter className="text-xl text-primary-color" />
-    <label className="mr-2 text-xl">Show:</label>
-    <select className="border border-gray-300 rounded-md p-2 text-gray-700">
-      <option>Default</option>
-      <option >Price: Low to High</option>
-      <option>Price: High to Low</option>
-    </select>
-  </div>
-</div>
+        {/* Sort */}
+        <div className="flex items-center gap-2 mb-4 md:mb-0">
+          <span className="text-xl text-gray-700">Sort By:</span>
+          <select
+            value={sortOption}
+            onChange={(e) => handleSort(e.target.value)}
+            className="border border-gray-300 rounded-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          >
+            <option>Newest</option>
+            <option>Oldest</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
+        </div>
+      </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <ProductCard title="Fresh Lime" price="$38.00" originalPrice="$45.00" imageSrc="/images/pro1.png" />
-        <ProductCard title="Country Burger" price="$45.00" imageSrc="/images/pro2.png" />
-        <ProductCard title="Cheese Butter" price="$10.00" imageSrc="/images/pro3.png" />
-        <ProductCard title="Chocolate Muffin" price="$28.00" imageSrc="/images/pro4.png" />
-        <ProductCard title="Drink" price="$23.00" originalPrice="$45.00" imageSrc="/images/pro11.png" />
-        <ProductCard title="Sandwiches" price="$25.00" imageSrc="/images/pro11.png" />
-        <ProductCard title="Pizza" price="$43.00" imageSrc="/images/pro12.png" />
-        <ProductCard title="Chicken Chup" price="$12.00" imageSrc="/images/pro10.png" />
-        <ProductCard title="Drink" price="$23.00" originalPrice="$45.00" imageSrc="/images/pro5.png" />
-        <ProductCard title="Sandwiches" price="$25.00" imageSrc="/images/pro6.png" />
-        <ProductCard title="Pizza" price="$43.00" imageSrc="/images/pro7.png" />
-        <ProductCard title="Chicken Chup" price="$12.00" imageSrc="/images/pro8.png" />
-        <ProductCard title="Sandwiches" price="$25.00" imageSrc="/images/pro11.png" />
-        <ProductCard title="Pizza" price="$43.00" imageSrc="/images/pro12.png" />
-        <ProductCard title="Chicken Chup" price="$12.00" imageSrc="/images/pro10.png" />
-        <ProductCard title="Drink" price="$23.00" originalPrice="$45.00" imageSrc="/images/pro5.png" />
-      </div>
-
-      {/* Price Filter */}
-      <div className="mt-8">
-        <h2 className="text-xl font-bold mb-4">Filter By Price</h2>
-        <div className="flex items-center gap-4 mb-4">
-          <input type="text" placeholder="From" className="border border-gray-300 rounded-md p-2 text-gray-700" />
-          <input type="text" placeholder="To" className="border border-gray-300 rounded-md p-2 text-gray-700" />
-          <button className="bg-primary-color text-white rounded-md p-2 flex items-center gap-2">
-            <FaTags /> Filter
-          </button>
-        </div>
-      </div>
-
-      {/* Latest Products Section */}
-      <div className="mt-8">
-        <h2 className="text-xl font-bold mb-4">Latest Products</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <ProductCard title="Pizza" price="$35.00" imageSrc="/images/pro11.png" />
-          <ProductCard title="Cupcake" price="$35.00" imageSrc="/images/pro12.png" />
-          <ProductCard title="Cookies" price="$35.00" imageSrc="/images/pro6.png" />
-          <ProductCard title="Burger" price="$35.00" imageSrc="/images/pro11.png" />
-          <ProductCard title="Fresh Lime" price="$38.00" originalPrice="$45.00" imageSrc="/images/pro1.png" />
-        <ProductCard title="Country Burger" price="$45.00" imageSrc="/images/pro2.png" />
-        <ProductCard title="Cheese Butter" price="$10.00" imageSrc="/images/pro3.png" />
-        <ProductCard title="Chocolate Muffin" price="$28.00" imageSrc="/images/pro4.png" />
-          
-        </div>
+      <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {products.map((product) => (
+          <Link href={`/products/${product.id}`} key={product.id} passHref>
+            <div className="relative bg-[#F7F7F7] rounded-lg shadow-lg overflow-hidden group cursor-pointer transition-transform transform hover:scale-105">
+              <img
+                className="h-[200px] w-full object-cover"
+                src={product.imageSrc}
+                alt={product.title}
+              />
+              <div className="p-4 flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {product.title}
+                  </h3>
+                  <div className="flex justify-between items-center mt-2">
+                    <span className="text-xl font-semibold text-yellow-500">
+                      Rs {product.price.toFixed(2)}
+                    </span>
+                    <button className="flex items-center gap-2 bg-[#8f8d8d] text-white rounded-md p-2 hover:bg-[#6d6b6b] transition-all focus:outline-none">
+                      <FaShoppingCart className="text-lg" />
+                      <span className="text-sm font-semibold">Add to Cart</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Shop;
+export default ShopPage;
